@@ -290,7 +290,7 @@
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="740" />
     <option name="y" value="39" />
     <option name="width" value="613" />
@@ -439,15 +439,15 @@
       <workItem from="1556577594325" duration="3157000" />
       <workItem from="1556929317797" duration="7272000" />
       <workItem from="1558782790972" duration="987000" />
-      <workItem from="1559223127131" duration="3038000" />
+      <workItem from="1559223127131" duration="3495000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88961000" />
+    <option name="totallyTimeSpent" value="89418000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4972973" visible="true" weight="0.2934947" />
       <window_info id="Structure" order="1" sideWeight="0.502455" side_tool="true" weight="0.19515885" />
