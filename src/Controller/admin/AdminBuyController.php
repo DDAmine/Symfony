@@ -2,7 +2,7 @@
 namespace App\Controller\admin;
 use App\Entity\Buy;
 use App\Form\BuyType;
-use App\Repository\BuyRepository;
+use App\Repository\BuyOneRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,13 +13,13 @@ use Symfony\Component\Form\Form;
 
 class AdminBuyController extends AbstractController{
     /**
-     * @var BuyRepository*/
+     * @var BuyOneRepository*/
     private $repository;
     /**
      * @var ObjectManager*/
     private $em;
 
-    public function __construct(BuyRepository $repository,ObjectManager $em)
+    public function __construct(BuyOneRepository $repository,ObjectManager $em)
     {
         $this->repository=$repository;
         $this->em=$em;

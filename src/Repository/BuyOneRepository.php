@@ -5,7 +5,9 @@ namespace App\Repository;
 
 
 use App\Entity\Buy;
+use App\Entity\BuySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -30,10 +32,26 @@ class BuyOneRepository extends ServiceEntityRepository
 
     public function findAllVisible():array
     {
+
         return $this->findVisibleQuery()
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
+
+
+    }
+    public function findAllVisibleQuery(BuySearch $search):Query{
+
+        $query= $this->findVisibleQuery();
+        if ($search->getMaxPrice()){
+            $query=$query->where('p.price <=:maxprice')
+                ->setParameter('maxprice',$search->getMaxPrice());
+        }
+        if ($search->getMinSurface()){
+            $query=$query->where('p.surface <=:minsurface')
+                ->setParameter('minsurface',$search->getMinSurface());
+        }
+        return $query->getQuery();
+
     }
 
 

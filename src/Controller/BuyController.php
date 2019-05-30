@@ -1,9 +1,12 @@
 <?php
 namespace App\Controller;
 use App\Entity\Buy;
+use App\Entity\BuySearch;
+use App\Form\BuySearchType;
 use App\Repository\BuyOneRepository;
-use App\Repository\BuyRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use  Twig\Environment  ;
@@ -23,8 +26,14 @@ class BuyController extends AbstractController {
     }
 
 
-    public function index():response{
+    public function index(Request $request):Response{
+
+        $search=new BuySearch();
+        $form=$this->createForm(BuySearchType::class,$search);
+        $form->handleRequest($request);
+
         $properties=$this->repository->findAllVisible();
+       // $properties=$this->repository->findAllVisibleQuery($search);
         $buy=new Buy();
         $buy->setTitle("mon premier bien")
             ->setPrice("256")
@@ -49,9 +58,11 @@ class BuyController extends AbstractController {
 
         // envoyer buy a la vue
         dump($buy);
+        $this->repository->findAllVisibleQuery($search);
 
         return $this->render('pages/buy.html.twig', [
-            "properties"=>$properties
+            "properties"=>$properties,
+            "form" =>$form->createView()
         ]);
     }
     /**
